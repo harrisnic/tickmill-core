@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,10 @@ Route::post('/transactions', [TransactionController::class, 'store']);
 Route::get('/transactions/{transaction}', [TransactionController::class, 'show']);
 Route::put('/transactions/{transaction}', [TransactionController::class, 'update']);
 Route::delete('/transactions/{transaction}', [TransactionController::class, 'destroy']);
+
+Route::get('/clients', [ClientController::class, 'index']);
+Route::post('/clients', [ClientController::class, 'store']);
+Route::get('/clients/{client}', [ClientController::class, 'show']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
