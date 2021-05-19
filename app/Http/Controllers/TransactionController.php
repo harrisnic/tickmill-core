@@ -31,7 +31,6 @@ class TransactionController extends Controller
     {
         $data = $this->validateData();
         $transaction = Transaction::create($data);
-
         return new TransactionResource($transaction);
     }
 
