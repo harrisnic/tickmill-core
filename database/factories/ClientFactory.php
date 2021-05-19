@@ -26,7 +26,7 @@ class ClientFactory extends Factory
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName,
             'email' => $this->faker->unique()->safeEmail(),
-            'avatar' => $this->faker->imageUrl(),
+            'avatar' => null,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];
