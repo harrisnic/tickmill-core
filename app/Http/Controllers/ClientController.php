@@ -64,12 +64,13 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return Response
+     * @param Client $client
+     * @return JsonResponse
      */
-    public function destroy($id)
+    public function destroy(Client $client)
     {
-        //
+        $client->delete();
+        return response()->json('Client deleted');
     }
 
     /**
