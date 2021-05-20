@@ -10,6 +10,7 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\File as FileFacade;
 use Intervention\Image\Facades\Image;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ClientController extends Controller
 {
@@ -78,7 +79,7 @@ class ClientController extends Controller
      * @param Client $client
      * @return JsonResponse
      */
-    public function avatar(Request $request, Client $client): JsonResponse
+    public function uploadAvatar(Request $request, Client $client): JsonResponse
     {
         $request->validate([
             'avatar' => [
@@ -101,6 +102,15 @@ class ClientController extends Controller
         $client->update(['avatar' => $avatarName]);
 
         return response()->json('Avatar uploaded', Response::HTTP_CREATED);
+    }
+
+    /**
+     * @param Client $client
+     * @return BinaryFileResponse
+     */
+    public function downloadAvatar(Client $client): BinaryFileResponse
+    {
+        return response()->download(public_path('uploads').'/'.$client->avatar);
     }
 
     private function validateData(): array

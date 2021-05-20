@@ -25,7 +25,8 @@ Route::get('/clients', [ClientController::class, 'index']);
 Route::post('/clients', [ClientController::class, 'store']);
 Route::get('/clients/{client}', [ClientController::class, 'show']);
 Route::put('/clients/{client}', [ClientController::class, 'update']);
-Route::post('/clients/{client}/avatar', [ClientController::class, 'avatar']);
+Route::post('/clients/{client}/avatar', [ClientController::class, 'uploadAvatar']);
+Route::get('/clients/{client}/avatar', [ClientController::class, 'downloadAvatar']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
