@@ -18,25 +18,22 @@ use App\Http\Controllers\AuthController;
 */
 
 // Public Routes
-Route::get('/transactions', [TransactionController::class, 'index']);
-Route::post('/transactions', [TransactionController::class, 'store']);
-Route::get('/transactions/{transaction}', [TransactionController::class, 'show']);
-Route::put('/transactions/{transaction}', [TransactionController::class, 'update']);
-Route::delete('/transactions/{transaction}', [TransactionController::class, 'destroy']);
-
-//Route::get('/clients', [ClientController::class, 'index']);
-Route::post('/clients', [ClientController::class, 'store']);
-Route::get('/clients/{client}', [ClientController::class, 'show']);
-Route::put('/clients/{client}', [ClientController::class, 'update']);
-Route::post('/clients/{client}/avatar', [ClientController::class, 'uploadAvatar']);
-Route::get('/clients/{client}/avatar', [ClientController::class, 'downloadAvatar']);
+Route::post('/login', [AuthController::class, 'login']);
 
 // Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::get('/clients', [ClientController::class, 'index']);
-});
 
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
+    Route::get('/clients', [ClientController::class, 'index']);
+    Route::post('/clients', [ClientController::class, 'store']);
+    Route::get('/clients/{client}', [ClientController::class, 'show']);
+    Route::put('/clients/{client}', [ClientController::class, 'update']);
+    Route::post('/clients/{client}/avatar', [ClientController::class, 'uploadAvatar']);
+    Route::get('/clients/{client}/avatar', [ClientController::class, 'downloadAvatar']);
+
+    Route::get('/transactions', [TransactionController::class, 'index']);
+    Route::post('/transactions', [TransactionController::class, 'store']);
+    Route::get('/transactions/{transaction}', [TransactionController::class, 'show']);
+    Route::put('/transactions/{transaction}', [TransactionController::class, 'update']);
+    Route::delete('/transactions/{transaction}', [TransactionController::class, 'destroy']);
+});
