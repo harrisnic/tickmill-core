@@ -21,7 +21,7 @@ class ClientController extends Controller
      */
     public function index(): AnonymousResourceCollection
     {
-        $transactions = Client::all();
+        $transactions = Client::paginate(10);
         return ClientResource::collection($transactions);
     }
 

@@ -18,7 +18,7 @@ class TransactionController extends Controller
      */
     public function index(): AnonymousResourceCollection
     {
-        $transactions = Transaction::all();
+        $transactions = Transaction::paginate(10);
         return TransactionResource::collection($transactions);
     }
 
