@@ -39,10 +39,10 @@ class AuthController extends Controller
 
         // Check if user exists and password is correct
         if(!$user || !Hash::check($request->password, $user->password)) {
-            return response()->json('Wrong credentials', Response::HTTP_UNAUTHORIZED);
+            return response()->json(['message' => 'Wrong credentials'], Response::HTTP_UNAUTHORIZED);
         }
 
         $token = $user->createToken('token')->plainTextToken;
-        return response()->json($token, Response::HTTP_CREATED);
+        return response()->json(['access_token' => $token], Response::HTTP_CREATED);
     }
 }
