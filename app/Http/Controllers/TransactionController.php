@@ -73,7 +73,8 @@ class TransactionController extends Controller
     private function validateData(): array
     {
         return request()->validate([
-            'amount' => ['required', 'numeric']
+            'amount' => ['required', 'numeric'],
+            'client_id' => ['required', 'exists:App\Models\Client,id']
         ]);
     }
 }

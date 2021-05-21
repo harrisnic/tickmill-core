@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Transaction extends Model
 {
     use HasFactory;
-    protected $fillable = ['amount'];
+    protected $fillable = ['amount', 'client_id'];
 
     /**
      * @return BelongsTo
