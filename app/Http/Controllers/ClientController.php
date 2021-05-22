@@ -70,7 +70,7 @@ class ClientController extends Controller
     public function destroy(Client $client)
     {
         $client->delete();
-        return response()->json('Client deleted');
+        return response()->json(['message'=>'Client deleted']);
     }
 
     /**
@@ -102,7 +102,7 @@ class ClientController extends Controller
 
         $client->update(['avatar' => $avatarName]);
 
-        return response()->json('Avatar uploaded', Response::HTTP_CREATED);
+        return response()->json(['message'=>'Avatar uploaded'], Response::HTTP_CREATED);
     }
 
     /**

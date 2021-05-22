@@ -67,7 +67,7 @@ class TransactionController extends Controller
     public function destroy(Transaction $transaction): JsonResponse
     {
         $transaction->delete();
-        return response()->json('Transaction deleted', Response::HTTP_OK);
+        return response()->json(['message'=>'Transaction deleted'], Response::HTTP_OK);
     }
 
     private function validateData(): array
