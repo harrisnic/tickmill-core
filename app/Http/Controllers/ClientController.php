@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ClientResource;
+use App\Http\Resources\TransactionResource;
 use App\Models\Client;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -21,8 +22,8 @@ class ClientController extends Controller
      */
     public function index(): AnonymousResourceCollection
     {
-        $transactions = Client::paginate(10);
-        return ClientResource::collection($transactions);
+        $clients = Client::paginate(10);
+        return ClientResource::collection($clients);
     }
 
     /**
@@ -46,6 +47,18 @@ class ClientController extends Controller
     public function show(Client $client): ClientResource
     {
         return new ClientResource($client);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Client $client
+     * @return AnonymousResourceCollection
+     */
+    public function transactions(Client $client): AnonymousResourceCollection
+    {
+        $transactions = $client->transactions()->paginate(10);
+        return TransactionResource::collection($transactions);
     }
 
     /**

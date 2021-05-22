@@ -29,6 +29,7 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('/clients/{client}', [ClientController::class, 'show']);
     Route::put('/clients/{client}', [ClientController::class, 'update']);
     Route::delete('/clients/{client}', [ClientController::class, 'destroy']);
+    Route::get('/clients/{client}/transactions', [ClientController::class, 'transactions']);
     Route::post('/clients/{client}/avatar', [ClientController::class, 'uploadAvatar']);
     Route::get('/clients/{client}/avatar', [ClientController::class, 'downloadAvatar']);
 
