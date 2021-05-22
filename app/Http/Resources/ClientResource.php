@@ -22,6 +22,8 @@ class ClientResource extends JsonResource
                 'last_name' => $this->last_name,
                 'email' => $this->email,
                 'avatar' => $this->avatar,
+                'created_at' => $this->created_at->format('d/m/Y H:i:s'),
+                'updated_at' => $this->updated_at->format('d/m/Y H:i:s'),
                 'transactions' => TransactionResource::collection($this->transactions)
             ]
         ];
