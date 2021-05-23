@@ -105,7 +105,7 @@ class ClientController extends Controller
         ]);
 
         $avatarName = time().'.'.$request->avatar->extension();
-        $resizedAvatar = Image::make($request->avatar)->resize(360, 360);
+        $resizedAvatar = Image::make($request->avatar)->resize(300, 300);
         $resizedAvatar->save(public_path('uploads').'/'. $avatarName);
 
         // Delete current avatar, if exists, from uploads folder
